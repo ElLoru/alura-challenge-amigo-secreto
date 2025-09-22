@@ -2,8 +2,24 @@
 
 let amigos = []
 let inputAmigos = document.getElementById("amigo")
+let listaAmigos = document.getElementById("listaAmigos")
 
 let agregarAmigo = () => {
-    !inputAmigos.value ? alert("Por favor, inserte un nombre") : amigos.push(inputAmigos.value)
-    inputAmigos.value = ""
+    if (!inputAmigos.value) {
+        alert("Por favor, inserte un nombre")
+    } else {
+        amigos.push(inputAmigos.value)
+        inputAmigos.value = ""
+        actualizarLista()
+    }
+}
+
+let actualizarLista = () => {
+    listaAmigos.innerHTML = ""
+
+    amigos.forEach((amigo) => {
+        let nuevoLi = document.createElement("li")
+        nuevoLi.textContent = amigo
+        listaAmigos.appendChild(nuevoLi)
+    })
 }
